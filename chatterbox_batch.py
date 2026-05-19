@@ -32,13 +32,6 @@ def main():
     from chatterbox.mtl_tts import ChatterboxMultilingualTTS
     model = ChatterboxMultilingualTTS.from_pretrained(device=device)
 
-    waveform, sr = torchaudio.load(sample_path)
-    if waveform.shape[0] > 1:
-        waveform = waveform.mean(dim=0, keepdim=True)
-    if sr != 16000:
-        waveform = torchaudio.transforms.Resample(sr, 16000)(waveform)
-    waveform = waveform[..., : 16000 * 15]
-
     total = len(tracks)
     for i, track in enumerate(tracks, 1):
         out_path = output_dir / f"{track['id']}.wav"
@@ -47,7 +40,7 @@ def main():
             print("  ⏭️  déjà existant, ignoré.")
             continue
         with torch.inference_mode():
-            wav = model.generate(track["text"], audio_prompt=waveform, lang="fr")
+            wav = model.generate(track["text"], audio_prompt_path=sample_path, language_id="fr")
         if wav.dim() == 1:
             wav = wav.unsqueeze(0)
         torchaudio.save(str(out_path), wav.cpu(), model.sr)
