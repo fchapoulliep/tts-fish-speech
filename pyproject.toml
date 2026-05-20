@@ -1,7 +1,7 @@
 [project]
-name = "tts-fish-speech"
+name = "tts-cloning-voice"
 version = "0.1.0"
-description = "Using Fish Speech to make intro of TikTok Videos"
+description = "Using TTS to make intro of TikTok Videos"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

@@ -1,5 +1,5 @@
 """
-Chatterbox TTS — Batch generation (modèle multilingue)
+Chatterbox TTS - Batch generation (modèle multilingue)
 Usage : uv run chatterbox_batch.py ma_voix.wav
 """
 
@@ -46,7 +46,7 @@ def main():
         torchaudio.save(str(out_path), wav.cpu(), model.sr)
         print(f"  ✅ {out_path.name}")
 
-    print(f"\n✅ Terminé — fichiers dans {output_dir.resolve()}")
+    print(f"\n✅ Terminé - fichiers dans {output_dir.resolve()}")
 
 
 if __name__ == "__main__":

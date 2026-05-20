@@ -2829,7 +2829,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tts-fish-speech"
+name = "tts-cloning-voice"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
